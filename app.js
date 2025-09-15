@@ -1,3 +1,7 @@
+var counter = require('./count');
+
+console.log(counter(['shaun', 'crystal', 'ryu']));
+
 // var time = 0;
 
 // var timer = setInterval(function() {
@@ -8,7 +12,22 @@
 //     }
 // }, 2000);
 
-console.log(__dirname);
-console.log(__filename);
+// console.log(__dirname);
+// console.log(__filename);
 
-// require, exports
+//normal function statement
+// function sayHi() {
+//     console.log('hi');
+// }
+// sayHi();
+
+// function callFunction(fun) {
+//     fun();
+// }
+
+// //function expression
+// var sayBye = function() {
+//     console.log('bye');
+// };
+
+// callFunction(sayBye);
