@@ -1,5 +1,47 @@
-// READING AND WRITING FILES
+// CREATING AND REMOVING DIRECTORIES
 var fs = require('fs');
+
+// fs.mkdirSync('stuff'); 
+// fs.rmdirSync('stuff');
+
+// fs.mkdir('stuff', function() {
+//     fs.readFile('readMe.txt', 'utf8', function(err, data) {
+//         fs.writeFile('./stuff/writeMe.txt', data);
+//     });
+// });
+
+// Fixed version (Callback)
+// fs.mkdir('stuff', function(err) {
+//   if (err && err.code !== 'EEXIST') throw err; // ignore if folder already exists
+
+//   fs.readFile('readMe.txt', 'utf8', function(err, data) {
+//     if (err) throw err;
+
+//     fs.writeFile('./stuff/writeMe.txt', data, function(err) {
+//       if (err) throw err;
+//       console.log('File written successfully!');
+//     });
+//   });
+// });
+
+
+// fs.unlink('./stuff/writeMe.txt', function() {
+//     fs.rmdir('stuff');
+// });
+
+fs.unlink('./stuff/writeMe.txt', (err) => {
+    // Ignore error if file doesn't exist
+    if (err && err.code !== 'ENOENT') throw err;
+
+    fs.rmdir('stuff', { recursive: true }, (err) => {
+        if (err) throw err;
+        console.log('Folder removed!');
+    });
+});
+
+
+// READING AND WRITING FILES
+// var fs = require('fs');
 
 // fs.readFile('readme.txt', 'utf8', function(err, data) {
 //     fs.writeFile('writeme.txt', data);
@@ -8,9 +50,9 @@ var fs = require('fs');
 
 // console.log("test");
 
-var readMe = fs.readFileSync("readme.txt", 'utf8');
-fs.writeFileSync("writeme.txt", readMe);
-console.log(readMe);
+// var readMe = fs.readFileSync("readme.txt", 'utf8');
+// fs.writeFileSync("writeme.txt", readMe);
+// console.log(readMe);
 
 //code
 
