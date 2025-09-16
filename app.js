@@ -1,27 +1,44 @@
+// READING AND WRITING FILES
+var fs = require('fs');
+
+// fs.readFile('readme.txt', 'utf8', function(err, data) {
+//     fs.writeFile('writeme.txt', data);
+//     // console.log(data);
+// });
+
+// console.log("test");
+
+var readMe = fs.readFileSync("readme.txt", 'utf8');
+fs.writeFileSync("writeme.txt", readMe);
+console.log(readMe);
+
+//code
+
+
 // Event Emitter
-var events = require('events');
-var util = require('util');
+// var events = require('events');
+// var util = require('util');
 
-var Person = function(name) {
-    this.name = name;
-};
+// var Person = function(name) {
+//     this.name = name;
+// };
 
-util.inherits(Person, events.EventEmitter);
+// util.inherits(Person, events.EventEmitter);
 
-var james = new Person('james');
-var mary = new Person('mary');
-var ryu = new Person('ryu');
-var people = [james, mary, ryu];
+// var james = new Person('james');
+// var mary = new Person('mary');
+// var ryu = new Person('ryu');
+// var people = [james, mary, ryu];
 
-people.forEach(function(person) {
-    person.on('speak', function(msg) {
-        console.log(person.name + ' said: ' + msg);
-    });
-});
+// people.forEach(function(person) {
+//     person.on('speak', function(msg) {
+//         console.log(person.name + ' said: ' + msg);
+//     });
+// });
 
-james.emit('speak', 'hey dudes');
-mary.emit('speak', 'hello world');
-ryu.emit('speak', 'I want a curry');
+// james.emit('speak', 'hey dudes');
+// mary.emit('speak', 'hello world');
+// ryu.emit('speak', 'I want a curry');
 
 
 // var myEmitter = new events.EventEmitter();
