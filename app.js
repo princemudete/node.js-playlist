@@ -1,5 +1,31 @@
-// CREATING AND REMOVING DIRECTORIES
+// READABLE STREAMS
+var http = require('http');
 var fs = require('fs');
+
+var myReadStream = fs.createReadStream(__dirname + '/readme.txt', 'utf8');
+var myWriteStream = fs.createWriteStream(__dirname + '/writeme.txt');
+
+myReadStream.on('data', function(chunk) {
+    console.log('new chunk received:');
+    myWriteStream.write(chunk);
+    // console.log(chunk);
+});
+
+// CREATING A SERVER
+// var http = require('http');
+
+// var server = http.createServer(function(req, res) {
+//     console.log('request was made: ' + req.url);
+//     res.writeHead(200, { 'Content-Type': 'text/plain' });
+//     res.end("Hey ninjas");
+// });
+
+// server.listen(3000, '127.0.0.1');
+// console.log('yo dawgs, now listening to port 3000');
+
+
+// CREATING AND REMOVING DIRECTORIES
+// var fs = require('fs');
 
 // fs.mkdirSync('stuff'); 
 // fs.rmdirSync('stuff');
@@ -29,15 +55,15 @@ var fs = require('fs');
 //     fs.rmdir('stuff');
 // });
 
-fs.unlink('./stuff/writeMe.txt', (err) => {
-    // Ignore error if file doesn't exist
-    if (err && err.code !== 'ENOENT') throw err;
+// fs.unlink('./stuff/writeMe.txt', (err) => {
+//     // Ignore error if file doesn't exist
+//     if (err && err.code !== 'ENOENT') throw err;
 
-    fs.rmdir('stuff', { recursive: true }, (err) => {
-        if (err) throw err;
-        console.log('Folder removed!');
-    });
-});
+//     fs.rmdir('stuff', { recursive: true }, (err) => {
+//         if (err) throw err;
+//         console.log('Folder removed!');
+//     });
+// });
 
 
 // READING AND WRITING FILES
