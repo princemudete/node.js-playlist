@@ -1,20 +1,42 @@
-// EXPRESS ROUTE PARAMS
+// TEMPLATE ENGINES
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'ejs');
+
 app.get('/', function(req, res) {
-    res.send('This is the homepage');
+    res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/contact', function(req, res) {
-    res.send('This is the contact page');
+    res.sendFile(__dirname + '/contact.html');
 });
 
 app.get('/profile/:name', function(req, res) {
-    res.send('You requested to see a profile with the name of ' + req.params.name);
+    var data = { age: 29, job: 'ninja', hobbies: ['eating', 'fighting', 'fishing'] };
+    res.render('profile', { person: req.params.name, data: data });
 });
 
 app.listen(3000);
+
+
+// EXPRESS ROUTE PARAMS
+// var express = require('express');
+// var app = express();
+
+// app.get('/', function(req, res) {
+//     res.send('This is the homepage');
+// });
+
+// app.get('/contact', function(req, res) {
+//     res.send('This is the contact page');
+// });
+
+// app.get('/profile/:name', function(req, res) {
+//     res.send('You requested to see a profile with the name of ' + req.params.name);
+// });
+
+// app.listen(3000);
 
 
 // PIPE STREAMS
